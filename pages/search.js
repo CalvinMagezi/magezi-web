@@ -1,9 +1,9 @@
 import Head from "next/Head";
-import Header from "../components/Header";
 import { API_KEY, CONTEXT_KEY } from "../keys";
 import Response from "../Response";
 import { useRouter } from "next/router";
 import SearchResults from "../components/SearchResults";
+import Navbar from "../components/Navbar";
 
 function Search({ results }) {
   const router = useRouter();
@@ -13,8 +13,7 @@ function Search({ results }) {
       <Head>
         <title>{router.query.term} - Search</title>
       </Head>
-      {/* Header */}
-      <Header />
+      <Navbar />
       {/* Search Results */}
       <SearchResults results={results} />
     </div>

@@ -1,4 +1,4 @@
-function HeaderOption({ Icon, title, selected }) {
+function Option({ Icon, title, selected }) {
   return (
     <div
       className={`flex items-center space-x-1 border-b-4 border-transparent hover:text-blue-500 cursor-pointer hover:border-blue-500 pb-3 ${
@@ -11,4 +11,4 @@ function HeaderOption({ Icon, title, selected }) {
   );
 }
 
-export default HeaderOption;
+export default Option;

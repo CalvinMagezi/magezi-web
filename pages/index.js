@@ -7,7 +7,6 @@ import {
 import Image from "next/image";
 import searchPic from "../public/logo.png";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 import Avatar from "../components/Avatar";
@@ -31,7 +30,7 @@ export default function Home() {
       </Head>
 
       {/* Header */}
-      <header className="flex justify-between w-screen p-5 space-x-4 text-sm text-gray-700">
+      <div className="flex justify-between w-screen p-5 space-x-4 text-sm text-gray-700">
         {/* Left */}
         <div className="flex items-center space-x-4">
           <p className="link">About</p>
@@ -48,7 +47,7 @@ export default function Home() {
           {/* Avatar */}
           <Avatar url="https://avatars.githubusercontent.com/u/30309553?v=4" />
         </div>
-      </header>
+      </div>
 
       {/* Body */}
       <form className="flex flex-col items-center flex-grow w-4/5 mt-20">
