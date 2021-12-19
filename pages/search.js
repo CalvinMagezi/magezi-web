@@ -1,4 +1,4 @@
-import Head from "next/Head";
+import Head from "next/head";
 import { API_KEY, CONTEXT_KEY } from "../keys";
 import Response from "../Response";
 import { useRouter } from "next/router";
