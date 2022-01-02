@@ -4,29 +4,26 @@ function SearchResults({ results }) {
   return (
     <div className="mx-auto w-full px-3 sm:pl-[5%] md:pl-[14%] lg:pl-52">
       <p className="mt-3 mb-5 text-gray-600 text-md">
-        About {results.searchInformation?.formattedTotalResults} results (
-        {results.searchInformation?.formattedSearchTime} seconds)
+        About: <span className="font-bold">{results.Heading}</span> <br />{" "}
+        Related Topics ({results.RelatedTopics?.length})
       </p>
 
-      {results.items?.map((result) => (
-        <div key={result.link} className="max-w-xl mb-8">
+      {results.RelatedTopics?.map((result) => (
+        <div key={result.FirstURL} className="max-w-xl mb-8">
           <div className="group">
-            <a href={result.link} className="text-sm">
-              {result.formattedUrl}
+            <a
+              href={result.FirstURL}
+              className="text-sm text-blue-800 group-hover:underline"
+            >
+              {result.FirstURL}
             </a>
             <br />
-            <a
-              href={result.link}
-              className="text-xl font-medium text-blue-800 truncate group-hover:underline"
-            >
-              {result.title}
-            </a>
           </div>
 
-          <p className="line-clamp-2">{result.snippet}</p>
+          <p className="line-clamp-2">{result.Text}</p>
         </div>
       ))}
-      <PaginationButtons />
+      {/* <PaginationButtons /> */}
     </div>
   );
 }

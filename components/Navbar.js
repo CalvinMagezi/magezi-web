@@ -9,12 +9,14 @@ import Avatar from "./Avatar";
 import logoPic from "../public/logo.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import HeaderOptions from "./HeaderOptions";
 
 function Navbar() {
   const router = useRouter();
   const searchInputRef = useRef(null);
+  const [warningMessage, setWarningMessage] = useState("");
+
   const search = (e) => {
     e.preventDefault();
 
@@ -22,7 +24,15 @@ function Navbar() {
 
     if (!term) return;
 
-    router.push(`/search?term=${term}`);
+    var words = term.trim().split(/\s+/);
+    var num_words = words.length;
+    if (num_words > 1) {
+      setWarningMessage("Search term can only be one word.");
+      return;
+    } else {
+      setWarningMessage("");
+      router.push(`/search?term=${term}`);
+    }
   };
   return (
     <header className="sticky top-0 bg-white">
@@ -62,6 +72,11 @@ function Navbar() {
           <Avatar url="https://avatars.githubusercontent.com/u/30309553?v=4" />
         </div>
       </div>
+      {warningMessage && (
+        <div class="w-full text-left mx-auto lg:pl-52 pb-3  text-red-500 text-sm">
+          <p>{warningMessage}</p>
+        </div>
+      )}
       <HeaderOptions />
     </header>
   );

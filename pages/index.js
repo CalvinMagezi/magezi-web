@@ -7,12 +7,13 @@ import {
 import Image from "next/image";
 import searchPic from "../public/logo.png";
 import Footer from "../components/Footer";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Avatar from "../components/Avatar";
 
 export default function Home() {
   const router = useRouter();
+  const [warningMessage, setWarningMessage] = useState("");
   const searchInputRef = useRef(null);
   const search = (e) => {
     e.preventDefault();
@@ -20,7 +21,15 @@ export default function Home() {
 
     if (!term) return;
 
-    router.push(`/search?term=${term}`);
+    var words = term.trim().split(/\s+/);
+    var num_words = words.length;
+    if (num_words > 1) {
+      setWarningMessage("Search term can only be one word.");
+      return;
+    } else {
+      setWarningMessage("");
+      router.push(`/search?term=${term}`);
+    }
   };
   return (
     <div className="flex flex-col items-center justify-center h-screen">
@@ -62,6 +71,11 @@ export default function Home() {
           <MicrophoneIcon className="h-5 mr-3 text-gray-500" />
         </div>
 
+        {warningMessage && (
+          <div class="w-full text-center mx-auto py-5 text-red-500 text-sm">
+            <p>{warningMessage}</p>
+          </div>
+        )}
         <div className="flex flex-col justify-center w-1/2 mt-3 space-y-2 sm:space-y-0 sm:flex-row sm:space-x-4">
           <button onClick={search} className="btn">
             Google Search
