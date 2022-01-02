@@ -47,7 +47,7 @@ export default function Home() {
         </div>
         {/* Right */}
         <div className="flex items-center space-x-4">
-          <p className="link">Gmail</p>
+          <p className="link">Mail</p>
           <p className="link">Images</p>
 
           {/* Icon */}
@@ -78,7 +78,7 @@ export default function Home() {
         )}
         <div className="flex flex-col justify-center w-1/2 mt-3 space-y-2 sm:space-y-0 sm:flex-row sm:space-x-4">
           <button onClick={search} className="btn">
-            Google Search
+            Search
           </button>
           <button onClick={search} className="btn">
             I'm Feeling Lucky
